@@ -12,10 +12,10 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.address = new Address(streetAddress,city,postalCode);
-        for (String type : phoneNumbers.keySet()){
-            PhoneNumber customerPhone = new PhoneNumber(type,phoneNumbers.get(type));
-            this.phoneNumbers.add(customerPhone);
+        this.address = new Address(streetAddress,city,postalCode); //creates A new address object for the customer
+        for (String type : phoneNumbers.keySet()){ //foreach set of phone info values (Type,Num)
+            PhoneNumber customerPhone = new PhoneNumber(type,phoneNumbers.get(type)); //create a new phone object
+            this.phoneNumbers.add(customerPhone); // add the new created object to the phone list of the customer
         }
 
     }
