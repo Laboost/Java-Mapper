@@ -7,6 +7,10 @@ public class Customer {
     private Address address;
     private List<PhoneNumber> PhoneNumbers = new ArrayList<PhoneNumber>();
 
+    public Customer(String firstName, String lastName, Integer age, String streetAdress, String city, Integer postalCode){
+        this.address = new Address();
+    }
+
     public String getFirstName() {
         return firstName;
     }
