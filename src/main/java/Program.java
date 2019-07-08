@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Program {
     public static void main(String[] args){
@@ -13,21 +14,30 @@ public class Program {
         HashMap<String,String> phoneNumbers = new HashMap<String, String>();
         phoneNumbers.put("mobile","(423) 811-7588");
 
-        //sending data to the processor
-        CreateACustomer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
+        //Creating a new Customer Object using the input data
+        Customer currentCustomer = CreateACustomer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
+
+        //Creating a json of the customer data using jackson mapper
+        String CustomerJson = ObjectToJson(currentCustomer);
+        System.out.println(CustomerJson);
 
 
     }
 
-    private static void CreateACustomer(String firstName, String lastName, Integer age, String streetAdress, String city,
+    private static Customer CreateACustomer(String firstName, String lastName, Integer age, String streetAdress, String city,
                                     Integer postalCode, HashMap<String,String> phoneNumbers){
         //create a new customer object
-        Customer currentCustomer = new Customer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
+        return new Customer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
 
-        System.out.println(currentCustomer.getAddress());
-        System.out.println(currentCustomer.getAge());
-        System.out.println(currentCustomer.getFirstName());
-        System.out.println(currentCustomer.getLastName());
-        System.out.println(currentCustomer.getPhoneNumbers());
+    }
+
+    private static String ObjectToJson(Object object){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(object);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return null;
     }
 }
