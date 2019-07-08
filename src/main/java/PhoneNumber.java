@@ -1,20 +1,19 @@
 public class PhoneNumber {
-    private String Type;
-    private String Number;
 
-    public String getType() {
-        return Type;
+    private String type;
+    private String number;
+
+    public PhoneNumber(String type, String number){
+        this.type = type;
+        this.number = number;
     }
 
-    public void setType(String type) {
-        Type = type;
+    public String getType() {
+        return type;
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
-    public void setNumber(String number) {
-        Number = number;
-    }
 }

@@ -1,4 +1,4 @@
-import java.util.Dictionary;
+import java.util.HashMap;
 
 public class Program {
     public void Main(){
@@ -10,15 +10,17 @@ public class Program {
         String streetAdress = "Milton Street";
         String city = "New York";
         Integer postalCode = 10021;
+        HashMap<String,String> phoneNumbers = new HashMap<String, String>();
+        phoneNumbers.put("mobile","(423) 811-7588");
 
         //Sending Data To The Processor
-        ProcessCustomerData(firstName,lastName,age,streetAdress,city,postalCode);
+        ProcessCustomerData(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
 
 
     }
 
-    public void ProcessCustomerData(String firstName, String lastName, Integer age,
-                                    String streetAdress, String city, Integer postalCode){
+    private void ProcessCustomerData(String firstName, String lastName, Integer age, String streetAdress, String city,
+                                    Integer postalCode, HashMap<String,String> phoneNumber){
 
     }
 }
