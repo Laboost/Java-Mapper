@@ -3,36 +3,32 @@ import java.lang.reflect.ParameterizedType;
 
 public class Mapper<T> {
 
-    private Class<T> typeOfT;
+    private Class<T> myType;
     private ObjectMapper objectMapper;
 
     @SuppressWarnings("unchecked")
     public Mapper(){
         objectMapper= new ObjectMapper();
-        typeOfT = (Class<T>)
+        myType = (Class<T>)
                 ((ParameterizedType)getClass()
                         .getGenericSuperclass())
                         .getActualTypeArguments()[0];
     }
 
-    //create java object of a given String
-    public T JsonToObject(String json){
-
+    //create a json String of a given object
+    public String objectToJson(Object object){
         try {
-            return objectMapper.readValue(json, typeOfT);
+            String json = objectMapper.writeValueAsString(object);
+            logObjectMapping(json);
+            return json;
         } catch (Exception e) {
-            System.out.println(e.toString());
+            MyLogger.getInstance().error(e);
         }
         return null;
     }
 
-    //create a json String of a given object
-    public String ObjectToJson(Object object){
-        try {
-            return objectMapper.writeValueAsString(object);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        return null;
+    //Logs Object data into jsontest.txt (C:\)
+    private void logObjectMapping(String objectData){
+        MyLogger.getInstance().info(myType.getSimpleName() +  " Data: " + objectData);
     }
 }

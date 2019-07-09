@@ -1,41 +1,22 @@
+import java.util.ArrayList;
 import java.util.HashMap;
-import org.apache.log4j.Logger;
+import java.util.List;
 
 public class Program {
-    final static Logger logger = Logger.getLogger(Program.class);
-
     public static void main(String[] args){
-
-        // Input Data
-        String firstName = "John";
-        String lastName = "Doe";
-        Integer age = 25;
-        String streetAdress = "Milton Street";
-        String city = "New York";
-        Integer postalCode = 10021;
-        HashMap<String,String> phoneNumbers = new HashMap<String, String>();
-        phoneNumbers.put("mobile","(423) 811-7588");
-
-        //Creating a new Customer Object using the input data
-        Customer currentCustomer = CreateACustomer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
-
+        List<PhoneNumber> phoneNumbers  = new ArrayList<PhoneNumber>();
+        phoneNumbers.add(new PhoneNumber("mobile","(423) 811-7588"));
+        Customer newCustomer = new Customer(
+                "John",
+                "Doe",
+                25,
+                "Milton Street",
+                "New York",
+                10021,
+                phoneNumbers
+                );
         //Creating a json of the customer data using jackson mapper
-
-        //log the creation of the customer and the json
-
-    }
-
-    //create a new customer object
-    private static Customer CreateACustomer(String firstName, String lastName, Integer age, String streetAdress, String city,
-                                    Integer postalCode, HashMap<String,String> phoneNumbers){
-
-        return new Customer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
-
-    }
-
-    //Logs customer data into jsontest.txt (C:\)
-    private static void LogCustomerCreation(String customerData){
-        logger.info("A new customer has been created.");
-        logger.info("Customer Data: \n" + customerData);
+        Mapper<Customer> customerMapper = new Mapper<Customer>();
+        customerMapper.objectToJson(newCustomer);
     }
 }
