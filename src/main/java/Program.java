@@ -47,7 +47,8 @@ public class Program {
         }
         return null;
     }
-
+    
+    //Logs customer data into jsontest.txt (C:\)
     private static void LogCustomerCreation(String customerData){
         logger.info("A new customer has been created.");
         logger.info("Customer Data: \n" + customerData);
