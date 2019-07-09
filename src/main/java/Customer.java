@@ -8,12 +8,11 @@ public class Customer {
     private Address address;
     private List<PhoneNumber> phoneNumbers;
 
-    public Customer(String firstName, String lastName, Integer age, String streetAddress, String city,
-                    Integer postalCode, List<PhoneNumber> phoneNumbers){
+    public Customer(String firstName, String lastName, Integer age, Address address, List<PhoneNumber> phoneNumbers){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.address = new Address(streetAddress,city,postalCode); //creates A new address object for the customer
+        this.address = address;
         this.phoneNumbers = phoneNumbers;
     }
 
