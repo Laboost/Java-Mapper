@@ -14,7 +14,7 @@ public class Program {
                 phoneNumbers
                 );
         //Creating a json of the customer data using jackson mapper
-        Mapper<Customer> customerMapper = new Mapper<Customer>();
+        Mapper customerMapper = new Mapper();
         customerMapper.objectToJson(newCustomer);
     }
 }
