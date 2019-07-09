@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 
 public class Program {
@@ -21,11 +20,8 @@ public class Program {
         Customer currentCustomer = CreateACustomer(firstName,lastName,age,streetAdress,city,postalCode,phoneNumbers);
 
         //Creating a json of the customer data using jackson mapper
-        String CustomerJson = ObjectToJson(currentCustomer);
 
         //log the creation of the customer and the json
-        LogCustomerCreation(CustomerJson);
-
 
     }
 
@@ -37,17 +33,6 @@ public class Program {
 
     }
 
-    //create a json String of a given object
-    private static String ObjectToJson(Object object){
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(object);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        return null;
-    }
-    
     //Logs customer data into jsontest.txt (C:\)
     private static void LogCustomerCreation(String customerData){
         logger.info("A new customer has been created.");

@@ -10,15 +10,26 @@ public class Address {
         this.postalCode = postalCode;
     }
 
+    //getters
     public String getStreetAddress() {
         return streetAddress;
     }
-
     public String getCity() {
         return city;
     }
     public Integer getPostalCode() {
         return postalCode;
+    }
+
+    //setters
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public void setPostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
     }
 
 }
