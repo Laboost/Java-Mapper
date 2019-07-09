@@ -8,12 +8,20 @@ public class PhoneNumber {
         this.number = number;
     }
 
+    //getters
     public String getType() {
         return type;
     }
-
     public String getNumber() {
         return number;
+    }
+
+    //setters
+    public void setType(String type) {
+        this.type = type;
+    }
+    public void setNumber(String number) {
+        this.number = number;
     }
 
 }
